@@ -1,0 +1,432 @@
+<script src="c.js"></script>
+<style>
+	#cy {
+  width: 100%;
+  height: 100%;
+  display: fixed;
+  top: 0px;
+  left: 0px;
+}
+</style>
+<div id="cy"></div>
+<script>
+var cy = cytoscape({
+  container: document.getElementById('cy'), // container to render in
+
+  elements: [ // list of graph elements to start with
+    
+  ],
+
+  style: [ // the stylesheet for the graph
+    {
+      selector: 'node',
+      style: {
+        'background-color': '#666',
+        'label': 'data(id)'
+      }
+    },
+
+    {
+      selector: 'edge',
+      style: {
+        'width': 3,
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+
+    {
+      selector: 'edge[class="red_edge"]',
+      style: {
+        'width': 3,
+        'line-color': 'red',
+        'target-arrow-color': 'red',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="red_edge"]',
+      style: {
+        'background-color': 'red'
+        
+      }
+    },
+
+
+{
+      selector: 'edge[class="green_edge"]',
+      style: {
+        'width': 3,
+        'line-color': 'green',
+        'target-arrow-color': 'green',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="green_edge"]',
+      style: {
+        'background-color': 'green'
+        
+      }
+    },
+
+    {
+      selector: 'edge[class="black_edge"]',
+      style: {
+        'width': 3,
+        'line-color': 'black',
+        'target-arrow-color': 'black',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="black_edge"]',
+      style: {
+        'background-color': 'black'
+        
+      }
+    },
+
+  
+
+
+
+
+
+    {
+      selector: 'edge[class="blue_edge"]',
+      style: {
+        'width': 3,
+        'line-color': 'blue',
+        'target-arrow-color': 'blue',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="blue_edge"]',
+      style: {
+        'background-color': 'blue'
+        
+      }
+    }
+
+
+
+  ],
+
+  layout: {
+    name: 'grid',
+    rows: 1
+  }
+
+});
+
+
+function addNode(x,a){
+	cy.add({group:'nodes',data:{id:x,class:a}})
+}
+
+function addEdge(x,a,y){
+	cy.add({group:'edges',data:{l:a,source:x,target:y,class:a}})
+}
+
+function lay(){
+	var layout = cy.layout({
+  name: 'cose'
+});
+
+layout.run();
+}
+
+
+var cc = `
+Lower_Silesian,blue_edge,German
+Basa_Banyumasan,blue_edge,Javanese
+Kabardian,blue_edge,Kabardian_(Cyrillic_script)
+Romagnol,blue_edge,Italian
+Guianan_Creole,blue_edge,French
+Saterland_Frisian,blue_edge,German
+Tunisian_Arabic_(Arabic_script),blue_edge,Arabic
+Tahitian,blue_edge,French
+Wolof,blue_edge,French
+Eastern_Mari,blue_edge,Russian
+Serbian_(Latin_script),blue_edge,Croatian
+Laki,blue_edge,Persian
+Amis,blue_edge,Traditional_Chinese
+Karachay-Balkar,blue_edge,Russian
+Ido,blue_edge,Esperanto
+Balinese_(Balinese_script),blue_edge,Balinese
+Bislama,blue_edge,English
+Chimborazo_Highland_Quichua,blue_edge,Spanish
+Abkhazian,blue_edge,Russian
+Bambara,blue_edge,French
+Galician,blue_edge,Portuguese
+Samogitian,blue_edge,Lithuanian
+Bosnian,blue_edge,Serbian_(Latin_script)
+Traditional_Chinese,blue_edge,Simplified_Chinese
+Moksha,blue_edge,Russian
+Chavacano,blue_edge,Persian
+French,blue_edge,Spanish
+French,blue_edge,Algerian_Arabic
+Russia_Buriat,blue_edge,Russian
+Guarani,blue_edge,Spanish
+Banjar,blue_edge,Indonesian
+Korean_(North_Korea),blue_edge,Korean
+Eastern_Mari,blue_edge,Western_Mari
+Kumyk,blue_edge,Russian
+Norfuk_/_Pitkern,blue_edge,English
+Talysh,blue_edge,Russian
+Tuvinian,blue_edge,Russian
+Kalmyk,blue_edge,Russian
+Czech,blue_edge,Slovak
+Voro,blue_edge,Estonian
+Serbo-Croatian,blue_edge,Bosnian
+Angika,blue_edge,Hindi
+Koyraboro_Senni,blue_edge,French
+Tunisian_Arabic,blue_edge,Tunisian_Arabic_(Arabic_script)
+Limburgish,blue_edge,Dutch
+Kotava,blue_edge,French
+Portuguese,blue_edge,Brazilian_Portuguese
+Quechua,blue_edge,Spanish
+Rusyn,blue_edge,Ukrainian
+Friulian,blue_edge,Italian
+Swiss_High_German,blue_edge,German
+Chinese_(Singapore),blue_edge,Simplified_Chinese
+Moksha,blue_edge,Erzya
+Chechen,blue_edge,Russian
+Chimborazo_Highland_Quichua,blue_edge,Quechua
+Austrian_German,blue_edge,German
+Atikamekw,blue_edge,French
+Batak_Toba_(Latin_script),blue_edge,Indonesian
+Lombard,blue_edge,Piedmontese
+Jamaican_Creole_English,blue_edge,English
+Southern_Luri,blue_edge,Persian
+Megleno-Romanian_(Cyrillic_script),blue_edge,Macedonian
+Tulu,blue_edge,Kannada
+Chinese_(Singapore),blue_edge,Simplified_ChineseLadin,blue_edge,Italian
+Sichuan_Yi,blue_edge,Chinese_(China)
+Lezghian,blue_edge,Russian
+British_English,blue_edge,English
+Kara-Kalpak,blue_edge,Kazakh_(Latin_script)
+Hunsrik,blue_edge,German
+Khowar,blue_edge,Urdu
+Laz,blue_edge,Turkish
+Norman,blue_edge,French
+Catalan,blue_edge,French
+Piedmontese,blue_edge,Italian
+Venetian,blue_edge,Italian
+Emiliano-Romagnolo,blue_edge,Italian
+Norwegian_Nynorsk,blue_edge,Norwegian_Bokmal
+Gilaki,blue_edge,Persian
+Northern_Luri,blue_edge,Persian
+Latgalian,blue_edge,Latvian
+Norwegian_Bokmal,blue_edge,Norwegian_Nynorsk
+Lower_Sorbian,blue_edge,German
+Walloon,blue_edge,French
+Chinese_(Malaysia),blue_edge,Chinese_(Singapore)
+Western_Balochi,blue_edge,Persian
+Sango,blue_edge,French
+Siberian_Tatar,blue_edge,Russian
+Balinese,blue_edge,Indonesian
+Goan_Konkani_(Devanagari_script),blue_edge,Hindi
+Kashmiri,blue_edge,Kashmiri_(Arabic_script)
+Kazakh_(Turkey),blue_edge,Kazakh_(Latin_script)
+Maithili,blue_edge,Hindi
+Gagauz,blue_edge,Turkish
+Piedmontese,blue_edge,Emiliano-Romagnolo
+Min_Nan_Chinese,blue_edge,Traditional_Chinese
+Chinese_(Taiwan),blue_edge,Traditional_Chinese
+Ossetic,blue_edge,Russian
+Lower_Sorbian,blue_edge,Upper_Sorbian
+Zam,blue_edge,Spanish
+Livonian,blue_edge,Estonian
+Dutch_(informal_address),blue_edge,Dutch
+Bavarian,blue_edge,German
+Russian,blue_edge,Azerbaijani
+Megleno-Romanian_(Latin_script),blue_edge,Romanian
+Livvi-Karelian,blue_edge,Finnish
+Picard,blue_edge,French
+Standard_Moroccan_Tamazight,blue_edge,Kabyle
+Gan_(Simplified),blue_edge,Simplified_Chinese
+Sakizaya,blue_edge,Chinese_(Taiwan)
+Goan_Konkani,blue_edge,Goan_Konkani_(Devanagari_script)
+Saraiki_(Arabic_script),blue_edge,Urdu
+Vlax_Romani,blue_edge,Romanian
+Bishnupriya,blue_edge,Bangla
+Pennsylvania_German,blue_edge,German
+Swiss_German,blue_edge,German
+Tarantino,blue_edge,Italian
+Chinese_(Macau),blue_edge,Chinese_(Hong_Kong)
+Colognian,blue_edge,German
+Aymara,blue_edge,Spanish
+Extremaduran,blue_edge,Spanish
+Tatar_(Cyrillic_script),blue_edge,Russian
+Chinese_(China),blue_edge,Simplified_Chinese
+Plautdietsch,blue_edge,German
+Chuvash,blue_edge,Russian
+Hakka_Chinese,blue_edge,Traditional_Chinese
+Kurdish_(Arabic_script),blue_edge,Central_Kurdish
+Southern_Kurdish,blue_edge,Chavacano
+German_(formal_address),blue_edge,German
+Shawiya_(Latin_script),blue_edge,French
+Hungarian_(formal_address),blue_edge,Hungarian
+Slovak,blue_edge,Czech
+Mirandese,blue_edge,Portuguese
+Romansh,blue_edge,Friulian
+Tatar,blue_edge,Tatar_(Cyrillic_script)
+Komi,blue_edge,Russian
+Haitian_Creole,blue_edge,French
+Gan_Chinese,blue_edge,Gan_(Traditional)
+Silesian,blue_edge,Polish
+Yiddish,blue_edge,Hebrew
+Western_Armenian,blue_edge,Armenian
+Aragonese,blue_edge,Spanish
+Southern_Altai,blue_edge,Russian
+Karelian,blue_edge,Finnish
+Tayal,blue_edge,Traditional_Chinese
+Inuktitut,blue_edge,Eastern_Canadian_(Aboriginal_syllabics)
+Egyptian_Arabic,blue_edge,Arabic
+Kazakh_(China),blue_edge,Kazakh_(Arabic_script)
+Fulah,blue_edge,French
+Mapuche,blue_edge,Spanish
+Gan_(Traditional),blue_edge,Traditional_Chinese
+Erzya,blue_edge,Moksha
+Belarusian_(Taraskievica_orthography),blue_edge,Belarusian
+Moldovan,blue_edge,Romanian
+Votic,blue_edge,Finnish
+Mingrelian,blue_edge,Georgian
+Upper_Sorbian,blue_edge,Lower_Sorbian
+Kazakh,blue_edge,Kazakh_(Cyrillic_script)
+Kirmanjki,blue_edge,Turkish
+Aromanian,blue_edge,Romanian
+Western_Mari,blue_edge,Eastern_Mari
+Sundanese,blue_edge,Indonesian
+Udmurt,blue_edge,Russian
+Cajun_French,blue_edge,French
+Low_Saxon,blue_edge,Dutch
+Ukrainian,blue_edge,Russian
+Low_German,blue_edge,German
+Megleno-Romanian,blue_edge,Megleno-Romanian_(Latin_script)
+Sanskrit,blue_edge,Hindi
+Mazanderani,blue_edge,Persian
+Central_Dusun,blue_edge,Malay
+Ligurian,blue_edge,Italian
+Main-Franconian,blue_edge,German
+Fiji_Hindi,blue_edge,Fiji_Hindi_(Latin_script)
+Kabardian_(Cyrillic_script),blue_edge,Russian
+Occitan,blue_edge,Catalan
+Italian,blue_edge,Romansh
+Zeelandic,blue_edge,Dutch
+Veps,blue_edge,Estonian
+Nahuatl,blue_edge,Spanish
+Javanese,blue_edge,Indonesian
+Batak_Mandailing,blue_edge,Indonesian
+Luxembourgish,blue_edge,German
+Crimean_Tatar,blue_edge,Crimean_Tatar_(Latin_script)
+Spanish,blue_edge,Russian
+Komi-Permyak,blue_edge,Russian
+Chinese,blue_edge,Simplified_Chinese
+Corsican,blue_edge,Italian
+Ligurian,blue_edge,Venetian
+Adyghe,blue_edge,Adyghe_(Cyrillic_script)
+Minangkabau,blue_edge,Indonesian
+Literary_Chinese,blue_edge,Traditional_Chinese
+Sicilian,blue_edge,Italian
+Yakut,blue_edge,Russian
+Uyghur,blue_edge,Uyghur_(Arabic_script)
+Ambonese_Malay,blue_edge,Indonesian
+Brazilian_Portuguese,blue_edge,Portuguese
+Neapolitan,blue_edge,Italian
+Buginese,blue_edge,Indonesian
+Kazakh_(Kazakhstan),blue_edge,Kazakh_(Cyrillic_script)
+Northern_Frisian,blue_edge,German
+South_Azerbaijani,blue_edge,Persian
+Kabiye,blue_edge,French
+Min_Dong_Chinese,blue_edge,Traditional_Chinese
+Kurdish,blue_edge,Kurdish_(Latin_script)
+Ladino,blue_edge,Spanish
+Kashubian,blue_edge,Polish
+Doteli,blue_edge,Nepali
+Wu_Chinese,blue_edge,Simplified_Chinese
+Crimean_Tatar_(Cyrillic_script),blue_edge,Russian
+Ingush,blue_edge,Russian
+Chinese_(Hong_Kong),blue_edge,Traditional_Chinese
+Asturian,blue_edge,Spanish
+Bhojpuri,blue_edge,Bhojpuri
+Batak_Toba,blue_edge,Batak_Toba_(Latin_script)
+Avaric,blue_edge,Russian
+Tornedalen_Finnish,blue_edge,Finnish
+Gorontalo,blue_edge,Indonesian
+Eastern_Pwo,blue_edge,Burmese
+Bashkir,blue_edge,Russian
+Western_Mari,blue_edge,Russian
+Spanish_(formal_address),blue_edge,Spanish
+Southern_Balochi,blue_edge,Persian
+Urdu,blue_edge,Western_Punjabi
+Moroccan_Arabic,blue_edge,Arabic
+Breton,blue_edge,French
+Kalaallisut,blue_edge,Danish
+Scots,blue_edge,English
+Kabyle,blue_edge,French
+Zhuang,blue_edge,Simplified_Chinese
+Emiliano-Romagnolo,blue_edge,Ligurian
+Achinese,blue_edge,Indonesian
+Bakhtiari,blue_edge,Persian
+Kazakh_(Arabic_script),blue_edge,Kazakh_(Cyrillic_script)
+Canadian_English,blue_edge,English
+Catalan,blue_edge,Occitan
+Pontic,blue_edge,Greek
+Lingala,blue_edge,French
+Sassarese_Sardinian,blue_edge,Italian
+Malagasy,blue_edge,French
+Kazakh_(Latin_script),blue_edge,Kazakh_(Cyrillic_script)
+Jutish,blue_edge,Danish
+West_Flemish,blue_edge,Dutch
+Gheg_Albanian,blue_edge,Albanian
+Sranan_Tongo,blue_edge,Dutch
+Min_Nan_Chinese,blue_edge,Min_Dong_Chinese
+Upper_Sorbian,blue_edge,German
+Erzya,blue_edge,Russian
+Tetum,blue_edge,Portuguese
+Mon,blue_edge,Burmese
+Taroko,blue_edge,Traditional_Chinese
+Serbian,blue_edge,Serbian_(Cyrillic_script)
+Tajik,blue_edge,Tajik_(Cyrillic_script)
+Saraiki,blue_edge,Saraiki_(Arabic_script)
+Awadhi,blue_edge,Hindi
+Emilian,blue_edge,Italian
+Arpitan,blue_edge,French
+Lak,blue_edge,Russian
+Quechua,blue_edge,Chimborazo_Highland_Quichua
+Palatine_German,blue_edge,German
+Min_Dong_Chinese,blue_edge,Min_Nan_Chinese
+Algerian_Arabic,blue_edge,Arabic
+`
+
+
+
+cc = cc.split(/\r?\n/)
+cc = cc.filter(e=>e)
+console.log(cc)
+cc.forEach(processing)
+
+function processing(v,i,a){
+  var nya = v.split(",")
+  console.log(nya)
+  try {addNode(nya[0],nya[1])}catch(err){}
+  try {addNode(nya[2],"x")}catch(err){}
+  addEdge(nya[0],nya[1],nya[2])
+}
+
+
+
+lay()
+
+
+</script>
